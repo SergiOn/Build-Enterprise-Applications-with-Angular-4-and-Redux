@@ -3,6 +3,7 @@ import { NgRedux, select } from 'ng2-redux'
 
 import { IAppState, IAppAction } from '../store';
 import { ADD_TODO } from '../actions';
+import { Store } from '../model/store';
 
 @Component({
   selector: 'app-todo-list',
@@ -29,14 +30,16 @@ export class TodoListComponent implements OnInit {
 
     const isCompleted = Math.random() > 0.5;
 
+    const store = new Store({
+      name: this.value,
+      isCompleted
+    });
+
+    console.log(store);
+
     this.ngRedux.dispatch({
       type: ADD_TODO,
-      todo: {
-        name: this.value,
-        isCompleted: isCompleted,
-        created: new Date()
-      },
-      lastUpdate: new Date()
+      ...store
     });
 
     this.value = '';
