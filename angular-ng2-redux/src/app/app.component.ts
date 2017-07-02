@@ -11,7 +11,7 @@ import { INCREMENT } from './actions';
 })
 export class AppComponent {
   title = 'app';
-  @select() counter;
+  @select('counter') count;
 
   constructor(
     private ngRedux: NgRedux<IAppState>
