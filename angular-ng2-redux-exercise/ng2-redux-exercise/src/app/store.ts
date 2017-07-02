@@ -1,4 +1,5 @@
 import { tassign } from 'tassign';
+import { ADD_TODO, COMPLETE_TODO, REMOVE_TODO, CLEAR_TODO } from './actions';
 
 export interface IAppState {
   todo: Array<object>,
@@ -12,16 +13,16 @@ export const INITIAL_STATE: IAppState = {
 
 export function rootReducer(state: IAppState, action): IAppState {
   switch (action.type) {
-    case 'ADD_TODO':
+    case ADD_TODO:
       return state;
 
-    case 'COMPLETE_TODO':
+    case COMPLETE_TODO:
       return state;
 
-    case 'REMOVE_TODO':
+    case REMOVE_TODO:
       return state;
 
-    case 'CLEAR_TODO':
+    case CLEAR_TODO:
       return state;
 
     default:
