@@ -21,6 +21,6 @@ export class AppModule {
   constructor(
     ngRedux: NgRedux<IAppState>
   ) {
-    ngRedux.configureStore(rootReducer, {});
+    ngRedux.configureStore(rootReducer, { counter: 0 });
   }
 }
