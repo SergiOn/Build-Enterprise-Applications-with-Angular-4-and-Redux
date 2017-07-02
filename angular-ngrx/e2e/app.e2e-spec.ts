@@ -1,6 +1,6 @@
 import { AngularReduxPage } from './app.po';
 
-describe('angular-redux App', () => {
+describe('angular-ngrx App', () => {
   let page: AngularReduxPage;
 
   beforeEach(() => {
