@@ -27,11 +27,13 @@ export class TodoListComponent implements OnInit {
       return;
     }
 
+    const isCompleted = Math.random() > 0.5;
+
     this.ngRedux.dispatch({
       type: ADD_TODO,
       todo: {
         name: this.value,
-        isCompleted: false,
+        isCompleted: isCompleted,
         created: new Date()
       },
       lastUpdate: new Date()

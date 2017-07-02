@@ -11,6 +11,7 @@ import { CLEAR_TODO } from '../actions';
 })
 export class TodoDashboardComponent implements OnInit {
   @select(t => t.todo.length) todos;
+  @select(t => (t.todo.filter(i => i.isCompleted).length * 100 / t.todo.length).toFixed(1)) complete;
   @select() lastUpdate;
 
   constructor(

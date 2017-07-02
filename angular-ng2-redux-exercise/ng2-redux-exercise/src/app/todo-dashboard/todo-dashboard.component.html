@@ -11,5 +11,5 @@
 
 <div *ngIf="todos | async">
   <hr>
-  Complete: 0%
+  Complete: {{ complete | async }}%
 </div>
