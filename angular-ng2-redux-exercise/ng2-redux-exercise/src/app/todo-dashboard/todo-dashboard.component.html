@@ -1,22 +1,15 @@
-<!--<h1>Dashboard</h1>-->
-<!--<p>-->
-  <!--Last Update: {{ lastUpdate | date:'mediumTime' }}-->
-<!--</p>-->
-<!--<p>-->
-  <!--Total items: {{ todos }}-->
-<!--</p>-->
-<!--<p>-->
-  <!--<button (click)="clearTodos()">Delete All</button>-->
-<!--</p>-->
-
-
 <h1>Dashboard</h1>
 <p>
-  Last Update: lastUpdate
+  Last Update: {{ lastUpdate | async | date: 'EEEE, MMMM dd, y, hh:mm:ss a' }}
 </p>
 <p>
-  Total items: todos
+  Total items: {{ todos | async }}
 </p>
 <p>
   <button (click)="clearTodo()">Delete All</button>
 </p>
+
+<div *ngIf="todos | async">
+  <hr>
+  Complete: 0%
+</div>
