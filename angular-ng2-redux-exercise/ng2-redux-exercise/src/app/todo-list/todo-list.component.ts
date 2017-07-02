@@ -36,5 +36,7 @@ export class TodoListComponent implements OnInit {
       },
       lastUpdate: new Date()
     });
+
+    this.value = '';
   }
 }

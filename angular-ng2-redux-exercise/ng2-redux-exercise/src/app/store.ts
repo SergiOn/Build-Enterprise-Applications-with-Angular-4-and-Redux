@@ -39,7 +39,10 @@ export function rootReducer(state: IAppState, action): IAppState {
       return state;
 
     case CLEAR_TODO:
-      return state;
+      return tassign(state, {
+        todo: [],
+        lastUpdate: action.lastUpdate
+      });
 
     default:
       return state;

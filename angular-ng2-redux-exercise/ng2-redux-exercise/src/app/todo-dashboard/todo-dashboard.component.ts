@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux } from 'ng2-redux'
+
+import { IAppState } from '../store';
+import { CLEAR_TODO } from '../actions';
 
 @Component({
   selector: 'app-todo-dashboard',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngRedux: NgRedux<IAppState>
+  ) { }
 
   ngOnInit() {
   }
 
+  clearTodo() {
+    this.ngRedux.dispatch({ type: CLEAR_TODO, lastUpdate: new Date() });
+  }
 }
