@@ -7,8 +7,7 @@ export interface ITodoState {
   created: Date
 }
 
-export interface IAction {
-  type: string,
+export interface IAction extends Action {
   todo: ITodoState[]
 }
 
@@ -18,7 +17,7 @@ export interface ITodoReducer<T> {
 
 const INITIAL_STATE = [];
 
-export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = INITIAL_STATE, action: Action & IAction) => {
+export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = INITIAL_STATE, action: IAction) => {
 
   switch (action.type) {
     case ADD_TODO:
