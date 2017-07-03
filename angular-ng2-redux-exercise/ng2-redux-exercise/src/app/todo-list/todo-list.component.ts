@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux'
 
 import { IAppState, IAppAction } from '../store';
-import { ADD_TODO, COMPLETE_TODO } from '../actions';
+import { ADD_TODO, COMPLETE_TODO, REMOVE_TODO } from '../actions';
 import { Store } from '../model/store';
 
 @Component({
@@ -59,7 +59,11 @@ export class TodoListComponent implements OnInit {
   }
 
   removeTodo(t) {
-    console.log(t);
+    const store = new Store(t);
 
+    this.ngRedux.dispatch({
+      type: REMOVE_TODO,
+      ...store
+    });
   }
 }

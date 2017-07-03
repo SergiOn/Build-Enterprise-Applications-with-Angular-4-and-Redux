@@ -32,7 +32,7 @@ export function rootReducer(state: IAppState, action: IAppAction): IAppState {
         lastUpdate: action.lastUpdate
       });
 
-    case COMPLETE_TODO:
+    case COMPLETE_TODO: {
       if (!state.todo.includes(action.todo)) {
         return state;
       }
@@ -50,9 +50,21 @@ export function rootReducer(state: IAppState, action: IAppAction): IAppState {
         todo,
         lastUpdate: action.lastUpdate
       });
+    }
 
-    case REMOVE_TODO:
-      return state;
+    case REMOVE_TODO: {
+      if (!state.todo.includes(action.todo)) {
+        return state;
+      }
+      const index = state.todo.indexOf(action.todo);
+      const todo = [...state.todo];
+      todo.splice(index, 1);
+
+      return tassign(state, {
+        todo,
+        lastUpdate: action.lastUpdate
+      });
+    }
 
     case CLEAR_TODO:
       return tassign(state, {
