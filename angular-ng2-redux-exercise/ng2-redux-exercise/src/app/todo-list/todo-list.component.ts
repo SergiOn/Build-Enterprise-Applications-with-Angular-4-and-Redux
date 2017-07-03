@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux'
 
 import { IAppState, IAppAction } from '../store';
-import { ADD_TODO } from '../actions';
+import { ADD_TODO, COMPLETE_TODO } from '../actions';
 import { Store } from '../model/store';
 
 @Component({
@@ -28,12 +28,14 @@ export class TodoListComponent implements OnInit {
       return;
     }
 
-    const isCompleted = Math.random() > 0.5;
+    // const isCompleted = Math.random() > 0.5;
 
-    const store = new Store({
-      name: this.value,
-      isCompleted
-    });
+    const store = new Store(
+      {
+        name: this.value,
+        // isCompleted
+      }
+    );
 
     console.log(store);
 
@@ -45,5 +47,19 @@ export class TodoListComponent implements OnInit {
     this.value = '';
   }
 
+  toggleTodo(t) {
+    const store = new Store(t);
+    // console.log(t);
+    // console.log(store);
 
+    this.ngRedux.dispatch({
+      type: COMPLETE_TODO,
+      ...store
+    });
+  }
+
+  removeTodo(t) {
+    console.log(t);
+
+  }
 }

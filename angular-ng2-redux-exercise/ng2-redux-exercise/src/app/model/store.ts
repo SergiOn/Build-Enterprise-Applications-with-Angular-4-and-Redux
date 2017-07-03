@@ -17,7 +17,10 @@ export class Store {
       this.todo.isCompleted = false;
     }
 
-    this.todo.created = new Date();
+    if (!this.todo.hasOwnProperty('created')) {
+      this.todo.created = new Date();
+    }
+
     this.lastUpdate = new Date();
   }
 }
