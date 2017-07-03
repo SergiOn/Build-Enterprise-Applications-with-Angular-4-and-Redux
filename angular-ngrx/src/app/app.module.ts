@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { todoReducer, updateReducer } from './reducers';
@@ -16,6 +17,7 @@ import { TodoDashboardComponent } from './todo-dashboard/todo-dashboard.componen
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     StoreModule.provideStore({
       todo: todoReducer,
       update: updateReducer

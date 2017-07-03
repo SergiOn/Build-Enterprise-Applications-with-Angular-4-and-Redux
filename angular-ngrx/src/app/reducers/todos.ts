@@ -2,26 +2,29 @@ import { Action } from '@ngrx/store';
 import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, CLEAR_TODO } from '../actions';
 
 export interface ITodoState {
+  id?: number,
   title: string,
   isCompleted: boolean,
   created: Date
 }
 
-export interface IAction extends Action {
-  todo: ITodoState[]
+interface IAction extends Action {
+  payload: ITodoState
 }
 
 export interface ITodoReducer<T> {
-  (state: ITodoState[], action: Action, IAction): T;
+  (state: T, action: Action, IAction): T;
 }
 
 const INITIAL_STATE = [];
 
 export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = INITIAL_STATE, action: IAction) => {
+  console.log(state);
+  console.log(action);
 
   switch (action.type) {
     case ADD_TODO:
-      return state;
+      return [...state, {id: state.length + 1, ...action.payload}];
 
     case UPDATE_TODO:
       return state;
