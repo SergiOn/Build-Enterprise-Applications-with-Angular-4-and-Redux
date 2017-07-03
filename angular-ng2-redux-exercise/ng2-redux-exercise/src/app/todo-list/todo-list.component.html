@@ -11,7 +11,7 @@
 
 <h1>Todo List</h1>
 <form novalidate name="form" (submit)="addTodo($event)">
-  <input type="text" name="input" placeholder="To do" required [(ngModel)]="value">
+  <input type="text" name="input" placeholder="To do" autocomplete="off" required [(ngModel)]="value">
   <button type="submit">Add</button>
 </form>
 <ul>

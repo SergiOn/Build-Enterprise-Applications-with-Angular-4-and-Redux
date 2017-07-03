@@ -9,7 +9,17 @@
   <button (click)="clearTodo()">Delete All</button>
 </p>
 
+<div>
+  <hr>
+  Complete: {{ complete | async | percent:'.2-2' }}
+</div>
+
 <div *ngIf="todos | async">
   <hr>
-  Complete: {{ complete | async }}%
+  Complete: {{ complete | async | percent:'.2-2' }}
+</div>
+
+<div *ngIf="complete | async ">
+  <hr>
+  Complete: {{ complete | async | percent:'.2-2' }}
 </div>
