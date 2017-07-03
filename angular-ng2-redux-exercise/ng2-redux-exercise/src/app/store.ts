@@ -27,8 +27,9 @@ export const INITIAL_STATE: IAppState = {
 export function rootReducer(state: IAppState, action): IAppState {
   switch (action.type) {
     case ADD_TODO:
+      console.log(action.todo);
       return tassign(state, {
-        todo: [...state.todo, ...action.todo],
+        todo: [...state.todo, {...action.todo, id: state.todo.length + 1}],
         lastUpdate: action.lastUpdate
       });
 

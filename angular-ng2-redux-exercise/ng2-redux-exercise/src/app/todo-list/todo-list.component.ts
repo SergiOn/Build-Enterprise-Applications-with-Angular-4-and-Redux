@@ -12,7 +12,7 @@ import { Store } from '../model/store';
 })
 export class TodoListComponent implements OnInit {
   value: string;
-  @select() todo;
+  @select() todo: Store;
   @select() lastUpdate;
 
   constructor(
@@ -44,4 +44,6 @@ export class TodoListComponent implements OnInit {
 
     this.value = '';
   }
+
+
 }

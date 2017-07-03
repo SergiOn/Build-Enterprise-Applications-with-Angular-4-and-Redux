@@ -11,13 +11,13 @@
 
 <h1>Todo List</h1>
 <form novalidate name="form" (submit)="addTodo($event)">
-  <input type="text" name="input" placeholder="To do" autocomplete="off" required [(ngModel)]="value">
+  <input type="text" name="input" placeholder="To do" autocomplete="off" autofocus required [(ngModel)]="value">
   <button type="submit">Add</button>
 </form>
 <ul>
-  <li>
-    <span>title</span>
-    <button>Remove</button>
+  <li *ngFor="let t of todo | async; trackBy: t?.id">
+    <span [class.completed]="t.isCompleted" (click)="toggleTodo(t)">{{ t.name }}</span>
+    <button (click)="removeTodo(t)">Remove</button>
   </li>
 </ul>
 
