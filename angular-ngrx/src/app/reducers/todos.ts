@@ -1,20 +1,37 @@
 import { Action } from '@ngrx/store';
-import { ADD_TODO, UPDATE_TODO, REMOVE_TODO } from '../actions';
+import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, CLEAR_TODO } from '../actions';
 
-export interface Reducer<T> {
-  (state: T, action: Action): T;
+export interface ITodoState {
+  title: string,
+  isCompleted: boolean,
+  created: Date
 }
 
-export const todoReducer: Reducer<object> = (state: object = {}, action: Action) => {
+export interface IAction {
+  type: string,
+  todo: ITodoState[]
+}
+
+export interface ITodoReducer<T> {
+  (state: ITodoState[], action: Action, IAction): T;
+}
+
+const INITIAL_STATE = [];
+
+export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = INITIAL_STATE, action: Action & IAction) => {
+
   switch (action.type) {
     case ADD_TODO:
-      return {};
+      return state;
 
     case UPDATE_TODO:
-      return {};
+      return state;
 
     case REMOVE_TODO:
-      return {};
+      return state;
+
+    case CLEAR_TODO:
+      return state;
 
     default:
       return state;

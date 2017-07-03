@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 
-import { todoReducer } from './reducers';
+import { todoReducer, updateReducer } from './reducers';
 
 import { AppComponent } from './app.component';
 
@@ -12,7 +12,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    StoreModule.provideStore({ todo: todoReducer })
+    StoreModule.provideStore({
+      todo: todoReducer,
+      update: updateReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
