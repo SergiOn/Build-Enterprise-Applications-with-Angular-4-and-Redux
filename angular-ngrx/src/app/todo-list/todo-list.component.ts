@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
-import { ADD_TODO } from '../actions';
+import { ADD_TODO, UPDATE } from '../actions';
 import { ITodoState } from '../reducers';
 
 interface AppState {
@@ -17,13 +17,13 @@ interface AppState {
 export class TodoListComponent implements OnInit {
   value: string;
   todo: Observable<ITodoState[]>;
-  update: Observable<Date>;
+  lastUpdate: Observable<Date>;
 
   constructor(
     private store: Store<AppState>
   ) {
     this.todo = store.select('todo');
-    this.update = store.select('update');
+    this.lastUpdate = store.select('update');
   }
 
   ngOnInit() {
@@ -45,6 +45,8 @@ export class TodoListComponent implements OnInit {
         created: new Date()
       }
     });
+
+    this.store.dispatch({ type: UPDATE });
 
     this.value = '';
   }

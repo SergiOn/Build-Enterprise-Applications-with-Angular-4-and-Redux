@@ -3,12 +3,12 @@
   <input type="text" name="input" placeholder="To do" autocomplete="off" autofocus required [(ngModel)]="value">
   <button type="submit">Add</button>
 </form>
-<!--<ul>-->
-  <!--<li *ngFor="let t of todo | async; trackBy: t?.id">-->
-    <!--<span [class.completed]="t.isCompleted" (click)="toggleTodo(t)">{{ t.title }}</span>-->
-    <!--<button (click)="removeTodo(t)">Remove</button>-->
-  <!--</li>-->
-<!--</ul>-->
+<ul>
+  <li *ngFor="let t of todo | async; trackBy: t?.id">
+    <span [class.completed]="t.isCompleted" (click)="toggleTodo(t)">{{ t.title }}</span>
+    <button (click)="removeTodo(t)">Remove</button>
+  </li>
+</ul>
 
 
 <div>{{ todo | async | json }}</div>
