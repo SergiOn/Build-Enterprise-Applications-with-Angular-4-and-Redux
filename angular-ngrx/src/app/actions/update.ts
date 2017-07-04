@@ -1,1 +1,1 @@
-export const UPDATE = 'UPDATE';
+export const UPDATE_LAST_DATE = 'UPDATE_LAST_DATE';

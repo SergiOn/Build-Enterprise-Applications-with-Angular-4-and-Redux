@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ADD_TODO, UPDATE_TODO, REMOVE_TODO, CLEAR_TODO } from '../actions';
+import { ADD_TODO, COMPLETE_TODO, REMOVE_TODO, CLEAR_TODO } from '../actions';
 
 export interface ITodoState {
   id?: number,
@@ -26,8 +26,13 @@ export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = IN
     case ADD_TODO:
       return [...state, {id: state.length + 1, ...action.payload}];
 
-    case UPDATE_TODO:
-      return state;
+    case COMPLETE_TODO:
+      const index = state.indexOf(action.payload);
+      return [
+        ...state.slice(0, index),
+        {...action.payload, isCompleted: !action.payload.isCompleted},
+        ...state.slice(index + 1)
+      ];
 
     case REMOVE_TODO:
       return state;

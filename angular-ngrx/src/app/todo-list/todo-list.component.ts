@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
-import { ADD_TODO, UPDATE } from '../actions';
+import { ADD_TODO, COMPLETE_TODO, REMOVE_TODO, UPDATE_LAST_DATE } from '../actions';
 import { ITodoState } from '../reducers';
 
 interface AppState {
@@ -46,16 +46,30 @@ export class TodoListComponent implements OnInit {
       }
     });
 
-    this.store.dispatch({ type: UPDATE });
+    this.store.dispatch({ type: UPDATE_LAST_DATE });
 
     this.value = '';
   }
 
-  toggleTodo(t) {
+  toggleTodo(todo) {
     console.log('toggleTodo');
+
+    this.store.dispatch({
+      type: COMPLETE_TODO,
+      payload: todo
+    });
+
+    this.store.dispatch({ type: UPDATE_LAST_DATE });
   }
 
-  removeTodo(t) {
+  removeTodo(todo) {
     console.log('removeTodo');
+
+    this.store.dispatch({
+      type: REMOVE_TODO,
+      payload: todo
+    });
+
+    this.store.dispatch({ type: UPDATE_LAST_DATE });
   }
 }
