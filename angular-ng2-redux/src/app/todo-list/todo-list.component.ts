@@ -26,6 +26,13 @@ export class TodoListComponent implements OnInit {
 
     this.ngRedux.dispatch({ type: ADD_TODO, title: input.value });
 
+    /*
+    this.ngRedux.dispatch({ type: ADD_TODO, todo: todo });
+    this.service.addTodo(todo).subscribe(t => {
+      this.ngRedux.dispatch({ type: ADD_TODO_CORRELATE, todo: todo });
+    });
+    */
+
     input.value = '';
   }
 
