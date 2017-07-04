@@ -19,14 +19,17 @@ interface ITodoReducer<T> {
 const INITIAL_STATE = [];
 
 export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = INITIAL_STATE, action: IAction) => {
-  console.log(state);
-  console.log(action);
-
   switch (action.type) {
     case ADD_TODO:
+      console.log(state);
+      console.log(action);
+
       return [...state, {id: state.length + 1, ...action.payload}];
 
     case COMPLETE_TODO: {
+      console.log(state);
+      console.log(action);
+
       const index = state.indexOf(action.payload);
       return [
         ...state.slice(0, index),
@@ -36,6 +39,9 @@ export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = IN
     }
 
     case REMOVE_TODO: {
+      console.log(state);
+      console.log(action);
+
       const index = state.indexOf(action.payload);
       return [
         ...state.slice(0, index),
@@ -44,9 +50,15 @@ export const todoReducer: ITodoReducer<ITodoState[]> = (state: ITodoState[] = IN
     }
 
     case CLEAR_TODO:
+      console.log(state);
+      console.log(action);
+
       return [];
 
     default:
+      console.log(state);
+      console.log(action);
+
       return state;
   }
 };

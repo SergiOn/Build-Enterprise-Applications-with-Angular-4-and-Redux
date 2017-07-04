@@ -24,4 +24,7 @@
   Complete: {{ complete | async | percent:'.2-2' }}
 </div>
 
-<div>{{ lastUpdate | async }}</div>
+<div *ngIf="lastUpdate | async">
+  <hr>
+  {{ lastUpdate | async }}
+</div>
