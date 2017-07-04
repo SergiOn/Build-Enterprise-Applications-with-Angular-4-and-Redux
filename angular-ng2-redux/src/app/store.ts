@@ -76,7 +76,21 @@ function clearTodo(state, action) {
   });
 }
 
+class TodoActions {
+  constructor(
+    private state,
+    private action
+  ) { }
+
+  addTodo() {}
+  toogleTodo() {}
+  removeTodo() {}
+  clearTodo() {}
+}
+
 export function rootReducer(state: IAppState, action): IAppState {
+  const actions = new TodoActions(state, action);
+
   switch (action.type) {
     case ADD_TODO: return addTodo(state, action);
     case TOGGLE_TODO: return toogleTodo(state, action);
