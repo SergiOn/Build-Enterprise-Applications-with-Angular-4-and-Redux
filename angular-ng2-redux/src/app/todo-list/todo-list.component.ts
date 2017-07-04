@@ -18,12 +18,7 @@ export class TodoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ngRedux.dispatch({ type: 'FETCH_TODO_REQUEST' });
-    // store.isFetching = true;
-
-    this.service.getTodos().subscribe(todos => {
-      this.ngRedux.dispatch({ type: 'FETCH_TODO_SUCCESS', todos: todos });
-    });
+    this.service.loadTodos();
   }
 
   addTodo(input) {
