@@ -10,8 +10,7 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  // @select() todos;
-  todos: any;
+  @select() todos;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -20,8 +19,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.service.getTodos().subscribe(todos => {
-      this.todos = todos.json();
-      console.log(todos.json());
+      this.ngRedux.dispatch({ type: 'FETCH_TODO_SUCCESS', todos: todos });
     });
   }
 
