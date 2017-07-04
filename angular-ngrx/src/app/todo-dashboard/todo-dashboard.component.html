@@ -1,29 +1,27 @@
+<h1>Dashboard</h1>
 <p>
-  todo-dashboard works!
+  Last Update: {{ lastUpdate | async | date: 'EEEE, MMMM dd, y, hh:mm:ss a' }}
+</p>
+<p>
+  Total items: {{ todos | async }}
+</p>
+<p>
+  <button (click)="clearTodo()">Delete All</button>
 </p>
 
-<!--<h1>Dashboard</h1>-->
-<!--<p>-->
-  <!--Last Update: {{ lastUpdate | async | date: 'EEEE, MMMM dd, y, hh:mm:ss a' }}-->
-<!--</p>-->
-<!--<p>-->
-  <!--Total items: {{ todos | async }}-->
-<!--</p>-->
-<!--<p>-->
-  <!--<button (click)="clearTodo()">Delete All</button>-->
-<!--</p>-->
+<div>
+  <hr>
+  Complete: {{ complete | async | percent:'.2-2' }}
+</div>
 
-<!--<div>-->
-  <!--<hr>-->
-  <!--Complete: {{ complete | async | percent:'.2-2' }}-->
-<!--</div>-->
+<div *ngIf="todos | async">
+  <hr>
+  Complete: {{ complete | async | percent:'.2-2' }}
+</div>
 
-<!--<div *ngIf="todos | async">-->
-  <!--<hr>-->
-  <!--Complete: {{ complete | async | percent:'.2-2' }}-->
-<!--</div>-->
+<div *ngIf="complete | async ">
+  <hr>
+  Complete: {{ complete | async | percent:'.2-2' }}
+</div>
 
-<!--<div *ngIf="complete | async ">-->
-  <!--<hr>-->
-  <!--Complete: {{ complete | async | percent:'.2-2' }}-->
-<!--</div>-->
+<div>{{ lastUpdate | async }}</div>

@@ -17,13 +17,11 @@ interface AppState {
 export class TodoListComponent implements OnInit {
   value: string;
   todo: Observable<ITodoState[]>;
-  lastUpdate: Observable<Date>;
 
   constructor(
     private store: Store<AppState>
   ) {
     this.todo = store.select('todo');
-    this.lastUpdate = store.select('update');
   }
 
   ngOnInit() {

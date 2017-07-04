@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { UPDATE_LAST_DATE } from '../actions';
 
-export interface UpdateReducer<T> {
+interface UpdateReducer<T> {
   (state: T, action: Action): T;
 }
 
