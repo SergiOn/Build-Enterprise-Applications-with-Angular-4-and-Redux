@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux'; 
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../actions'; 
-import { IAppState } from '../store'; 
+import { Component, OnInit } from '@angular/core';
+import { NgRedux, select } from 'ng2-redux';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../actions';
+import { IAppState } from '../store';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent {
-  @select() todos; 
-  
-  constructor(private ngRedux: NgRedux<IAppState>) {
+export class TodoListComponent implements OnInit {
+  // @select() todos;
+  todos: any;
+
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private service: TodoService
+  ) { }
+
+  ngOnInit() {
+    this.service.getTodos().subscribe(todos => {
+      this.todos = todos.json();
+      console.log(todos.json());
+    });
   }
 
   addTodo(input) {
-    if (!input.value) return; 
+    if (!input.value) return;
 
     this.ngRedux.dispatch({ type: ADD_TODO, title: input.value });
 
