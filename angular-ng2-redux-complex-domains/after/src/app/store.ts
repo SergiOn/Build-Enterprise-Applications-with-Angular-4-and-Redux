@@ -4,8 +4,8 @@ import { ITaskingState, TASKING_INITIAL_STATE, taskingReducer } from './tasking/
 import { IMessagingState, MESSAGING_INITIAL_STATE, messagingReducer } from './messaging/store';
 
 export interface IAppState {
-  tasking: ITaskingState;
-  messaging: IMessagingState;
+  tasking?: ITaskingState;
+  messaging?: IMessagingState;
 }
 
 export const INITIAL_STATE: IAppState = {
